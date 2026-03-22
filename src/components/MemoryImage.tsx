@@ -84,7 +84,7 @@ const MemoryImage = ({
   const anim = entryStyles[entry];
 
   return (
-    <div ref={ref} className={`my-10 flex justify-center ${className}`}>
+    <div ref={ref} className={`my-10 relative ${className}`}>
       <div
         className={`overflow-hidden transition-all duration-700 ${frameClasses[frame]}`}
         style={{
@@ -98,17 +98,10 @@ const MemoryImage = ({
           className="w-full h-auto object-cover hover:scale-105 transition-transform duration-500"
           loading="lazy"
         />
-        {/* Polaroid caption inside the white border */}
-        {frame === "polaroid" && caption && (
-          <p className="font-display text-sm text-muted-foreground text-center mt-1 absolute bottom-3 left-0 right-0">
-            {caption}
-          </p>
-        )}
       </div>
-      {/* External caption for non-polaroid frames */}
-      {frame !== "polaroid" && caption && (
+      {caption && (
         <p
-          className="font-display text-sm text-muted-foreground text-center mt-3 transition-opacity duration-500 absolute -bottom-8 left-0 right-0"
+          className="font-display text-sm text-muted-foreground text-center mt-3 transition-opacity duration-500"
           style={{ opacity: visible ? 1 : 0, transitionDelay: "200ms" }}
         >
           {caption}
