@@ -6,7 +6,10 @@ interface Props {
 
 const BirthdayPopup = ({ onEnter }: Props) => {
   const [showLetters, setShowLetters] = useState(false);
-  const name = "Aishwarya Shivakumar";
+  
+  // Split name into two lines properly
+  const firstName = "AISHWARYA";
+  const lastName = "SHIVAKUMAR";
 
   useEffect(() => {
     const t = setTimeout(() => setShowLetters(true), 300);
@@ -40,23 +43,42 @@ const BirthdayPopup = ({ onEnter }: Props) => {
           🎉 Happy Birthday 🎉
         </p>
 
-        {/* Bouncy name reveal */}
-        <h1 className="font-display text-4xl sm:text-5xl md:text-6xl leading-tight tracking-tight text-foreground mb-6 min-h-[4rem]">
-          {showLetters &&
-            name.split("").map((letter, i) => (
-              <span
-                key={i}
-                className="inline-block animate-bounce-letter"
-                style={{ animationDelay: `${i * 0.05 + 0.3}s` }}
-              >
-                {letter === " " ? "\u00A0" : letter}
-              </span>
-            ))}
-        </h1>
+        {/* Bouncy name reveal - TWO LINES */}
+        <div className="font-display text-4xl sm:text-5xl md:text-6xl leading-tight tracking-tight text-foreground mb-6 min-h-[8rem]">
+          {showLetters && (
+            <>
+              {/* First name - AISHWARYA */}
+              <div className="mb-2">
+                {firstName.split("").map((letter, i) => (
+                  <span
+                    key={`first-${i}`}
+                    className="inline-block animate-bounce-letter"
+                    style={{ animationDelay: `${i * 0.05 + 0.3}s` }}
+                  >
+                    {letter}
+                  </span>
+                ))}
+              </div>
+              
+              {/* Last name - SHIVAKUMAR */}
+              <div>
+                {lastName.split("").map((letter, i) => (
+                  <span
+                    key={`last-${i}`}
+                    className="inline-block animate-bounce-letter"
+                    style={{ animationDelay: `${i * 0.05 + 0.8}s` }}
+                  >
+                    {letter}
+                  </span>
+                ))}
+              </div>
+            </>
+          )}
+        </div>
 
         <p
           className="font-story text-lg text-muted-foreground italic mb-10 animate-fade-up-blur"
-          style={{ animationDelay: "1.8s", opacity: 0, animationFillMode: "forwards" }}
+          style={{ animationDelay: "2s", opacity: 0, animationFillMode: "forwards" }}
         >
           Ammu (Kuttan 😜) — your memory lane awaits!
         </p>
@@ -67,7 +89,7 @@ const BirthdayPopup = ({ onEnter }: Props) => {
             hover:scale-110 active:scale-95 transition-transform duration-200 
             animate-pulse-glow animate-fade-up-blur cursor-pointer
             shadow-lg"
-          style={{ animationDelay: "2.2s", opacity: 0, animationFillMode: "forwards" }}
+          style={{ animationDelay: "2.4s", opacity: 0, animationFillMode: "forwards" }}
         >
           ✨ Start Adventure ✨
         </button>
