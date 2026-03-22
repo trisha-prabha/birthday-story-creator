@@ -57,7 +57,7 @@ const Index = () => {
             </p>
           </MemoryBlock>
 
-          <MemoryImage src={photoCloseup} alt="Aishwarya closeup" caption="Those eyes that say everything 💫" />
+          <MemoryImage src={photoCloseup} alt="Aishwarya closeup" caption="Those eyes that say everything 💫" frame="polaroid" entry="zoom-rotate" />
 
           <MemoryBlock>
             <p className="font-story text-lg leading-relaxed text-foreground">
@@ -65,7 +65,7 @@ const Index = () => {
             </p>
           </MemoryBlock>
 
-          <MemoryImage src={photoSchool} alt="School days" caption="School days & sweet surprises 🎁" />
+          <MemoryImage src={photoSchool} alt="School days" caption="School days & sweet surprises 🎁" frame="tape" entry="slide-left" />
 
           <MemoryBlock>
             <p className="font-story text-lg leading-relaxed text-foreground">
@@ -73,9 +73,9 @@ const Index = () => {
             </p>
           </MemoryBlock>
 
-          <MemoryImage src={photoSelfie} alt="Best friends selfie" caption="Us being us 🩷" />
+          <MemoryImage src={photoSelfie} alt="Best friends selfie" caption="Us being us 🩷" frame="tilt-right" entry="flip" />
 
-          <MemoryVideo src={video2} caption="Our favourite chaos 🎶" />
+          <MemoryVideo src={video2} caption="Our favourite chaos 🎶" frame="rounded-glow" />
 
           <MemoryBlock>
             <p className="font-story text-lg leading-relaxed text-foreground">
@@ -83,11 +83,11 @@ const Index = () => {
             </p>
           </MemoryBlock>
 
-          <MemoryImage src={photoSeaside} alt="Seaside memories" caption="Pondi vibes & salty air 🌊" />
+          <MemoryImage src={photoSeaside} alt="Seaside memories" caption="Pondi vibes & salty air 🌊" frame="circle-peek" entry="slide-right" />
 
-          <MemoryImage src={photoGarden} alt="Garden moment" caption="Flower girl forever 🌺" />
+          <MemoryImage src={photoGarden} alt="Garden moment" caption="Flower girl forever 🌺" frame="stamp" entry="drop" />
 
-          <MemoryVideo src={video1} caption="Goofy moments we live for 😂" />
+          <MemoryVideo src={video1} caption="Goofy moments we live for 😂" frame="film-strip" />
 
           <MemoryBlock>
             <p className="font-story text-lg leading-relaxed text-foreground">
@@ -95,7 +95,7 @@ const Index = () => {
             </p>
           </MemoryBlock>
 
-          <MemoryImage src={photoHug} alt="Best friends hugging" caption="Distance means nothing 🫂" />
+          <MemoryImage src={photoHug} alt="Best friends hugging" caption="Distance means nothing 🫂" frame="tilt-left" entry="fade-up" />
 
           {/* Closing */}
           <MemoryBlock className="text-center mt-16 mb-8">
