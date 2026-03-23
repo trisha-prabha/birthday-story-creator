@@ -1,4 +1,7 @@
-import { useState } from "react";
+// src/pages/Index.tsx
+import { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
+import confetti from "canvas-confetti";
 import BirthdayPopup from "@/components/BirthdayPopup";
 import FloatingHearts from "@/components/FloatingHearts";
 import MemoryBlock from "@/components/MemoryBlock";
@@ -14,25 +17,42 @@ import pondiPhoto from "../assets/img1711546354438.jpg";
 import hugPhoto from "../assets/photo-hug.jpg";
 import mbbsPhoto from "../assets/IMG_20260322_184006.jpg";
 
-import video1 from "../assets/video-1.mp4"; // adjust path if needed
-import video2 from "../assets/video-2.mp4"; // adjust path if needed
+import video1 from "../assets/video-1.mp4";
+import video2 from "../assets/video-2.mp4";
 
 const Index = () => {
-    const [entered, setEntered] = useState(false);
+    const [showMemoryLane, setShowMemoryLane] = useState(false); // true after clicking popup
+    const [showPopup, setShowPopup] = useState(false);
+    const navigate = useNavigate();
+
+    // 🔒 Login redirect
+    useEffect(() => {
+        if (localStorage.getItem("loggedIn") !== "true") {
+            navigate("/login");
+        } else {
+            // Confetti + show popup after 1.5s
+            setTimeout(() => {
+                confetti({ particleCount: 200, spread: 100, origin: { y: 0.6 } });
+                setShowPopup(true);
+            }, 1500);
+        }
+    }, [navigate]);
 
     const handleEnter = () => {
-        setEntered(true);
+        setShowMemoryLane(true); // show all memory content
+        setShowPopup(false); // hide popup
     };
 
     return (
         <div className="min-h-screen bg-background relative overflow-x-hidden">
-            {/* 🎉 ALWAYS SHOW POPUP FIRST */}
-            {!entered && <BirthdayPopup onEnter={handleEnter} />}
-
+            {/* Floating hearts always */}
             <FloatingHearts />
 
-            {/* 🌸 MAIN CONTENT */}
-            {entered && (
+            {/* 🎉 Birthday popup */}
+            {showPopup && <BirthdayPopup onEnter={handleEnter} />}
+
+            {/* 🌸 Memory lane */}
+            {showMemoryLane && (
                 <main className="relative z-10 max-w-2xl mx-auto px-5 py-16 sm:py-24">
                     {/* Opening */}
                     <MemoryBlock className="text-center mb-16">
