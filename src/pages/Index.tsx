@@ -1,182 +1,183 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import BirthdayPopup from "@/components/BirthdayPopup";
 import FloatingHearts from "@/components/FloatingHearts";
 import MemoryBlock from "@/components/MemoryBlock";
 import MemoryImage from "@/components/MemoryImage";
 import MemoryVideo from "@/components/MemoryVideo";
+import video1 from "../assets/video-1.mp4"; // adjust path
+import video2 from "../assets/video-2.mp4"; // adjust path
 
 const Index = () => {
   const [entered, setEntered] = useState(false);
-  const [popupSeen, setPopupSeen] = useState(false);
-
-  useEffect(() => {
-    const seen = localStorage.getItem("bday-popup-seen");
-    if (seen) {
-      setPopupSeen(true);
-      setEntered(true);
-    }
-  }, []);
 
   const handleEnter = () => {
     setEntered(true);
-    setPopupSeen(true);
-    localStorage.setItem("bday-popup-seen", "true");
   };
 
   return (
-    <div className="min-h-screen bg-background relative overflow-x-hidden">
-      {!popupSeen && !entered && <BirthdayPopup onEnter={handleEnter} />}
+      <div className="min-h-screen bg-background relative overflow-x-hidden">
 
-      <FloatingHearts />
+        {/* 🎉 ALWAYS SHOW POPUP FIRST */}
+        {!entered && <BirthdayPopup onEnter={handleEnter} />}
 
-      {entered && (
-        <main className="relative z-10 max-w-2xl mx-auto px-5 py-16 sm:py-24">
-          {/* Opening */}
-          <MemoryBlock className="text-center mb-16">
-            <p className="font-display text-3xl sm:text-4xl text-birthday-pink leading-snug">
-              🎉 Happy Birthday, Aishwarya Shivakumar! 🎉
-            </p>
-            <p className="font-story text-lg text-muted-foreground mt-3 italic">
-              Ammu (or Kuttan 😜) - Scroll slow, feel every memory. Here's to your next chapter of magic! 💖
-            </p>
-          </MemoryBlock>
+        <FloatingHearts />
 
-          {/* ITI Childhood */}
-          <MemoryBlock>
-            <p className="font-story text-lg leading-relaxed text-foreground">
-              Aishwarya grew up in Bangalore's ITI locality – those aesthetic streets lined with quiet charm, 
-              where <em>daddy's little princess</em> learned to bloom. She was the nicest soul around, 
-              turning rainy evenings into laughter with her soft giggles.
-            </p>
-          </MemoryBlock>
+        {/* 🌸 MAIN CONTENT */}
+        {entered && (
+            <main className="relative z-10 max-w-2xl mx-auto px-5 py-16 sm:py-24">
 
-          <MemoryImage 
-            src="/images/iti-aesthetic.jpg" 
-            alt="Bangalore ITI locality" 
-            caption="Aesthetic streets that shaped her ✨" 
-            frame="polaroid" 
-            entry="zoom-rotate" 
-          />
+              {/* Opening */}
+              <MemoryBlock className="text-center mb-16">
+                <p className="font-display text-3xl sm:text-4xl text-birthday-pink leading-snug">
+                  🎉 Happy Birthday, Aishwarya Shivakumar! 🎉
+                </p>
+                <p className="font-story text-lg text-muted-foreground mt-3 italic">
+                  Ammu (or Kuttan 😜) - Scroll slow, feel every memory. Here's to your next chapter of magic! 💖
+                </p>
+              </MemoryBlock>
 
-          {/* Empathy & First Memory */}
-          <MemoryBlock>
-            <p className="font-story text-lg leading-relaxed text-foreground">
-              She's <strong>empathy in human form</strong> – feeling your lows before your voice cracks, 
-              her eyes locking on with that steady gaze saying <em>"I've got you"</em> louder than words.
-            </p>
-          </MemoryBlock>
+              {/* ITI Childhood */}
+              <MemoryBlock>
+                  <p className="font-story text-lg leading-relaxed text-foreground">
+                      Aishu — straight out of Bangalore’s ITI lanes, where everything feels a little softer, a little calmer… just like her energy. Daddy’s little princess, but also the kind of person who makes everyone feel like they matter.
+                      <br /> <br />
+                      She’s not loud about it, but somehow she turns the simplest moments into something special — especially those rainy evenings that end up filled with her soft giggles and random laughter. Being around her just feels easy… like comfort, like home, like something you never want to lose. 💗
+                  </p>
+              </MemoryBlock>
 
-          <MemoryImage 
-            src="/images/pistachio-green-top.jpg" 
-            alt="First memory - pistachio green top" 
-            caption="My FIRST memory of her 💚" 
-            frame="tilt-right" 
-            entry="flip" 
-          />
+              <MemoryImage
+                  src="src\assets\photo-garden.jpg"
+                  alt="Bangalore ITI locality"
+                  caption="In quiet streets and soft rains, a beautiful soul learned how to shine. 🌧️✨"
+                  frame="polaroid"
+                  entry="zoom-rotate"
+              />
 
-          {/* First Meeting Story */}
-          <MemoryBlock>
-            <p className="font-story text-lg leading-relaxed text-foreground">
-              That pistachio green top moment – my very first memory. Her firing nerdy questions like a curious professor. 
-              Thought she was <em>padip</em>. Wrong. Ethnic day changed everything – our first real laugh syncing like puzzle pieces.
-            </p>
-          </MemoryBlock>
+              {/* Empathy */}
+              <MemoryBlock>
+                <p className="font-story text-lg leading-relaxed text-foreground">
+                  She's <strong>empathy in human form</strong> – feeling your lows before your voice cracks,
+                  her eyes locking on with that steady gaze saying <em>"I've got you"</em> louder than words.
+                </p>
+              </MemoryBlock>
 
-          <MemoryImage 
-            src="/images/ethnic-day.jpg" 
-            alt="Ethnic day magic" 
-            caption="Ethnic day – where friendship began 🥻" 
-            frame="tape" 
-            entry="slide-left" 
-          />
+              <MemoryImage
+                  src="src\assets\photo-selfie.jpg"
+                  alt="First memory"
+                  caption="My FIRST memory of her 💚"
+                  frame="tilt-right"
+                  entry="flip"
+              />
 
-          {/* Snickers & Bus Days */}
-          <MemoryBlock>
-            <p className="font-story text-lg leading-relaxed text-foreground">
-              She'd sneak Snickers (<em>dad's sacred favorite</em>) from home, slipping them with a sly <em>"don't tell."</em> 
-              That missed bus day? Me crying, phone dead – she thrust hers into my palm instantly.
-            </p>
-          </MemoryBlock>
+              {/* First Meeting */}
+              <MemoryBlock>
+                <p className="font-story text-lg leading-relaxed text-foreground">
+                  That pistachio green top moment – my very first memory. Her firing nerdy questions like a curious professor.
+                  Thought she was <em>Padipsss</em>. Wrong. Ethnic day changed everything – our first real laugh syncing like puzzle pieces.
+                </p>
+              </MemoryBlock>
 
-          <MemoryImage 
-            src="/images/bus-stop-days.jpg" 
-            alt="Bus stop family" 
-            caption="Daily drops + appa's paneer butter masala 🥘" 
-            frame="stamp" 
-            entry="drop" 
-          />
+              <MemoryImage
+                  src="src\assets\photo-closeup.jpg"
+                  alt="Ethnic day"
+                  caption="Some first memories don’t fade… they stay, glowing softly forever 💚"
+                  frame="tape"
+                  entry="slide-left"
+              />
 
-          {/* Pondi Memories */}
-          <MemoryBlock>
-            <p className="font-story text-lg leading-relaxed text-foreground">
-              Pondi sealed it: endless bike rides through beach roads, salty wind whipping hair, waves crashing like applause. 
-              Gelato ice cream melting as we laughed under orange sunsets. Pure freedom.
-            </p>
-          </MemoryBlock>
+              {/* Snickers */}
+              <MemoryBlock>
+                <p className="font-story text-lg leading-relaxed text-foreground">
+                  She'd sneak Snickers (<em>dad's sacred favorite</em>) from home, slipping them with a sly <em>"don't tell."</em>
+                  That missed bus day? Me crying – she thrust her phone into my palm instantly "Dont't worry Chottu! And ever since I didn't have to worry about anything - she got my back <strong>ALWAYS </strong>"                </p>
+              </MemoryBlock>
 
-          <MemoryImage 
-            src="/images/pondi-beach.jpg" 
-            alt="Pondi adventures" 
-            caption="Bike rides, waves, gelato magic 🌊🍦" 
-            frame="circle-peek" 
-            entry="slide-right" 
-          />
+              <MemoryImage
+                  src="\src\assets\photo-seaside.jpg"
+                  alt="Bus days"
+                  caption= "In the smallest gestures, she gave the biggest kind of love 💫"
+                  frame="stamp"
+                  entry="drop"
+              />
 
-          {/* Unbreakable Bond */}
-          <MemoryBlock>
-            <p className="font-story text-lg leading-relaxed text-foreground">
-              What holds us? We never quit. She's my <strong>HOME</strong> – safe space to ugly-cry, be messy without judgment. 
-              My #1 cheerleader hyping tiniest wins: <em>"Nailed that interview? QUEEN."</em>
-            </p>
-          </MemoryBlock>
+              {/* Pondi */}
+              <MemoryBlock>
+                <p className="font-story text-lg leading-relaxed text-foreground">
+                  Pondi sealed it: endless bike rides through beach roads, salty wind whipping hair, waves crashing like applause.
+                  Gelato ice cream melting as we laughed under orange sunsets. Pure freedom.
+                </p>
+              </MemoryBlock>
 
-          <MemoryImage 
-            src="/images/best-friends.jpg" 
-            alt="Unbreakable bond" 
-            caption="My HOME, my cheerleader 🩷" 
-            frame="rounded-glow" 
-            entry="fade-up" 
-          />
+              <MemoryImage
+                  src="src\assets\img1711546354438.jpg"
+                  alt="Pondi"
+                  caption="Between waves and sunsets, we found pieces of forever 🌊🌅"
+                  frame="circle-peek"
+                  entry="slide-right"
+              />
 
-          {/* MBBS Journey */}
-          <MemoryBlock>
-            <p className="font-story text-lg leading-relaxed text-foreground">
-              Now MBBS in Pondi – far from ITI lanes, daddy's hugs, paneer masala Sundays. Away from everyone but 
-              forging wings from princess to life-saver. Every homesick ache? Worth it.
-            </p>
-          </MemoryBlock>
+                <MemoryVideo
+                    src={video2}
+                    caption="Between waves and sunsets, we found pieces of forever 🌊🌅"
+                    frame="film-strip"
+                />
 
-          <MemoryImage 
-            src="/images/mbbs-life.jpg" 
-            alt="Doctor in the making" 
-            caption="From princess to life-saver 🩺" 
-            frame="tilt-left" 
-            entry="zoom-rotate" 
-          />
+              {/* Bond */}
+              <MemoryBlock>
+                <p className="font-story text-lg leading-relaxed text-foreground">
+                  What holds us? We never quit. She's my <strong>HOME</strong> – safe space to ugly-cry, be messy without judgment.
+                  My #1 cheerleader hyping tiniest wins: <em>"Nailed it da!!"</em>
+                </p>
+              </MemoryBlock>
 
-          {/* Closing Hugs */}
-          <MemoryBlock className="text-center mt-16 mb-8">
-            <div className="bg-card rounded-3xl p-8 sm:p-12 shadow-lg border border-birthday-light-pink/30">
-              <p className="font-display text-2xl sm:text-3xl text-birthday-pink mb-4">
-                Biggest hugs, Ammu! 🫂💖
-              </p>
-              <p className="font-story text-lg text-foreground italic leading-relaxed">
-                Happy Birthday again – can't wait to celebrate you in person soon! 
-                Keep soaring – Bangalore waits, but the world needs your light. 🚀
-              </p>
-              <p className="font-display text-4xl mt-6 animate-gentle-bob">🎂✨🎀</p>
-            </div>
-          </MemoryBlock>
+              <MemoryImage
+                  src="\src\assets\photo-hug.jpg"
+                  alt="Bond"
+                  caption="My HOME, my cheerleader 🩷"
+                  frame="rounded-glow"
+                  entry="fade-up"
+              />
 
-          {/* Footer */}
-          <MemoryBlock className="text-center mt-12 pb-8">
-            <p className="font-display text-sm text-muted-foreground">
-              Made with ❤️ for Ammu | 2026
-            </p>
-          </MemoryBlock>
-        </main>
-      )}
-    </div>
+              {/* MBBS */}
+              <MemoryBlock>
+                <p className="font-story text-lg leading-relaxed text-foreground">
+                  Now MBBS in Pondi – far from ITI lanes, daddy's hugs, paneer masala Sundays. Away from everyone but
+                  forging wings from princess to life-saver. Every homesick ache? Worth it.
+                </p>
+              </MemoryBlock>
+
+              <MemoryImage
+                  src="\src\assets\IMG_20260322_184006.jpg"
+                  alt="MBBS"
+                  caption="From someone’s little princess to someone’s life-saving miracle✨🩺"
+                  frame="tilt-left"
+                  entry="zoom-rotate"
+              />
+
+              {/* Closing */}
+              <MemoryBlock className="text-center mt-16 mb-8">
+                <div className="bg-card rounded-3xl p-8 sm:p-12 shadow-lg border border-birthday-light-pink/30">
+                  <p className="font-display text-2xl sm:text-3xl text-birthday-pink mb-4">
+                    Biggest hugs, Ammu! 🫂💖
+                  </p>
+                  <p className="font-story text-lg text-foreground italic leading-relaxed">
+                    Happy Birthday again – can't wait to celebrate you in person soon!
+                    Keep soaring – Bangalore waits, but the world needs your light. 🚀
+                  </p>
+                  <p className="font-display text-4xl mt-6 animate-gentle-bob">🎂✨🎀</p>
+                </div>
+              </MemoryBlock>
+
+              {/* Footer */}
+              <MemoryBlock className="text-center mt-12 pb-8">
+                <p className="font-display text-sm text-muted-foreground">
+                  Made with ❤️ for Ammu | 2026
+                </p>
+              </MemoryBlock>
+
+            </main>
+        )}
+      </div>
   );
 };
 

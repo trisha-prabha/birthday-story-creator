@@ -91,7 +91,7 @@ const BirthdayPopup = ({ onEnter }: Props) => {
             shadow-lg"
           style={{ animationDelay: "2.4s", opacity: 0, animationFillMode: "forwards" }}
         >
-          ✨ Start Adventure ✨
+          ✨ Click Me! ✨
         </button>
       </div>
     </div>
