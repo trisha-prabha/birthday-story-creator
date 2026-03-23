@@ -4,8 +4,18 @@ import FloatingHearts from "@/components/FloatingHearts";
 import MemoryBlock from "@/components/MemoryBlock";
 import MemoryImage from "@/components/MemoryImage";
 import MemoryVideo from "@/components/MemoryVideo";
-import video1 from "../assets/video-1.mp4"; // adjust path
-import video2 from "../assets/video-2.mp4"; // adjust path
+
+// ✅ Import all images/videos
+import gardenPhoto from "../assets/photo-garden.jpg";
+import selfiePhoto from "../assets/photo-selfie.jpg";
+import closeupPhoto from "../assets/photo-closeup.jpg";
+import seasidePhoto from "../assets/photo-seaside.jpg";
+import pondiPhoto from "../assets/img1711546354438.jpg";
+import hugPhoto from "../assets/photo-hug.jpg";
+import mbbsPhoto from "../assets/IMG_20260322_184006.jpg";
+
+import video1 from "../assets/video-1.mp4"; // adjust path if needed
+import video2 from "../assets/video-2.mp4"; // adjust path if needed
 
 const Index = () => {
     const [entered, setEntered] = useState(false);
@@ -16,7 +26,6 @@ const Index = () => {
 
     return (
         <div className="min-h-screen bg-background relative overflow-x-hidden">
-
             {/* 🎉 ALWAYS SHOW POPUP FIRST */}
             {!entered && <BirthdayPopup onEnter={handleEnter} />}
 
@@ -25,7 +34,6 @@ const Index = () => {
             {/* 🌸 MAIN CONTENT */}
             {entered && (
                 <main className="relative z-10 max-w-2xl mx-auto px-5 py-16 sm:py-24">
-
                     {/* Opening */}
                     <MemoryBlock className="text-center mb-16">
                         <p className="font-display text-3xl sm:text-4xl text-birthday-pink leading-snug">
@@ -46,7 +54,7 @@ const Index = () => {
                     </MemoryBlock>
 
                     <MemoryImage
-                        src="src\assets\photo-garden.jpg"
+                        src={gardenPhoto}
                         alt="Bangalore ITI locality"
                         caption="In quiet streets and soft rains, a beautiful soul learned how to shine. 🌧️✨"
                         frame="polaroid"
@@ -62,7 +70,7 @@ const Index = () => {
                     </MemoryBlock>
 
                     <MemoryImage
-                        src="src\assets\photo-selfie.jpg"
+                        src={selfiePhoto}
                         alt="First memory"
                         caption="If lost, return to each other. 💚"
                         frame="tilt-right"
@@ -78,7 +86,7 @@ const Index = () => {
                     </MemoryBlock>
 
                     <MemoryImage
-                        src="src\assets\photo-closeup.jpg"
+                        src={closeupPhoto}
                         alt="Ethnic day"
                         caption="Some first memories don’t fade… they stay, glowing softly forever 💚"
                         frame="tape"
@@ -89,13 +97,14 @@ const Index = () => {
                     <MemoryBlock>
                         <p className="font-story text-lg leading-relaxed text-foreground">
                             She'd sneak Snickers (<em>dad's sacred favorite</em>) from home, slipping them with a sly <em>"don't tell."</em>
-                            That missed bus day? Me crying – she thrust her phone into my palm instantly "Dont't worry Chottu! And ever since I didn't have to worry about anything - she got my back <strong>ALWAYS </strong>"                </p>
+                            That missed bus day? Me crying – she thrust her phone into my palm instantly "Don't worry Chottu! And ever since I didn't have to worry about anything - she got my back <strong>ALWAYS </strong>"
+                        </p>
                     </MemoryBlock>
 
                     <MemoryImage
-                        src="\src\assets\photo-seaside.jpg"
+                        src={seasidePhoto}
                         alt="Bus days"
-                        caption= "In the smallest gestures, she gave the biggest kind of love 💫"
+                        caption="In the smallest gestures, she gave the biggest kind of love 💫"
                         frame="stamp"
                         entry="drop"
                     />
@@ -109,7 +118,7 @@ const Index = () => {
                     </MemoryBlock>
 
                     <MemoryImage
-                        src="src\assets\img1711546354438.jpg"
+                        src={pondiPhoto}
                         alt="Pondi"
                         caption="Between waves and sunsets, we found pieces of forever 🌊🌅"
                         frame="circle-peek"
@@ -118,7 +127,7 @@ const Index = () => {
 
                     <MemoryVideo
                         src={video2}
-                        caption="She cooks for me… and yes, I brag about it😎🍲"
+                        caption="She cooks for me… and yes, I brag about it 😎🍲"
                         frame="film-strip"
                     />
 
@@ -131,7 +140,7 @@ const Index = () => {
                     </MemoryBlock>
 
                     <MemoryImage
-                        src="\src\assets\photo-hug.jpg"
+                        src={hugPhoto}
                         alt="Bond"
                         caption="My HOME, my cheerleader 🩷"
                         frame="rounded-glow"
@@ -147,7 +156,7 @@ const Index = () => {
                     </MemoryBlock>
 
                     <MemoryImage
-                        src="\src\assets\IMG_20260322_184006.jpg"
+                        src={mbbsPhoto}
                         alt="MBBS"
                         caption="From someone’s little princess to someone’s life-saving miracle✨🩺"
                         frame="tilt-left"
@@ -174,7 +183,6 @@ const Index = () => {
                             Made with ❤️ for Ammu | 2026
                         </p>
                     </MemoryBlock>
-
                 </main>
             )}
         </div>
